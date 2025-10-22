@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "title": "Miserere",
+    "year": 2025,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "media": [
+      { "type": "image", "src": "/src/assets/project1.jpg" },
+      { "type": "video", "src": "/videos/urban.mp4" },
+      { "type": "image", "src": "/src/assets/project2.jpg" }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Étranger",
+    "year": 2025,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "media": [
+      { "type": "video", "src": "/videos/urban.mp4" },
+      { "type": "image", "src": "/src/assets/project2.jpg" },
+      { "type": "image", "src": "/src/assets/project1.jpg" }
+    ]
+  },
+    {
+    "id": 3,
+    "title": "Paths",
+    "year": 2025,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "media": [
+      { "type": "video", "src": "/videos/urban.mp4" },
+      { "type": "image", "src": "/src/assets/project2.jpg" },
+      { "type": "image", "src": "/src/assets/project1.jpg" }
+    ]
+  },
+    {
+    "id": 4,
+    "title": "Rammendo",
+    "year": 2025,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "media": [
+      { "type": "video", "src": "/videos/urban.mp4" },
+      { "type": "image", "src": "/src/assets/project2.jpg" },
+      { "type": "image", "src": "/src/assets/project1.jpg" }
+    ]
+  },
+    {
+    "id": 5,
+    "title": "AI Generated Memory",
+    "year": 2025,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "media": [
+      { "type": "video", "src": "/videos/urban.mp4" },
+      { "type": "image", "src": "/src/assets/project2.jpg" },
+      { "type": "image", "src": "/src/assets/project1.jpg" }
+    ]
+  },
+    {
+    "id": 6,
+    "title": "Somnium",
+    "year": 2024,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "media": [
+      { "type": "video", "src": "/videos/urban.mp4" },
+      { "type": "image", "src": "/src/assets/project2.jpg" },
+      { "type": "image", "src": "/src/assets/project1.jpg" }
+    ]
+  },
+    {
+    "id": 7,
+    "title": "Memoria",
+    "year": 2024,
+    "description": "Ho visto la verifica numero sette di Ugo Mulas, 'Il Laboratorio'. Nel suo tentativo di autorappresentazione, non ho visto altro che quella verifica, e dopo mesi di riflessione, ho trovato il mio autoritratto: era sempre davanti ai miei occhi, bastava solo un po' di fissaggio e della carta. Anche un po' di coraggio e le giuste precauzioni. Quando lo sviluppo ha dato luce al ritratto, tutto era al posto giusto. Era giusto, ed era sempre stato lì. \n\nNonostante la bellezza di quel momento, sconsiglio di applicare il fissaggio sul viso. O su qualsiasi cosa ci sia nella camera oscura.",
+    "media": [
+      { "type": "image", "src": "/src/assets/Memoria.jpg" }
+    ]
+  },
+     {
+    "id": 8,
+    "title": "Are you willing to look inside your soul?",
+    "year": 2024,
+    "description": "Ho visto la verifica numero sette di Ugo Mulas, 'Il Laboratorio'. Nel suo tentativo di autorappresentazione, non ho visto altro che quella verifica, e dopo mesi di riflessione, ho trovato il mio autoritratto: era sempre davanti ai miei occhi, bastava solo un po' di fissaggio e della carta. Anche un po' di coraggio e le giuste precauzioni. Quando lo sviluppo ha dato luce al ritratto, tutto era al posto giusto. Era giusto, ed era sempre stato lì. \n\nNonostante la bellezza di quel momento, sconsiglio di applicare il fissaggio sul viso. O su qualsiasi cosa ci sia nella camera oscura.",
+    "media": [
+      { "type": "image", "src": "/src/assets/Memoria.jpg" }
+    ]
+  }
+]

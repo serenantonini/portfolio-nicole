@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap');
+
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Minimalist grayscale palette for photography portfolio */
+    --background: 0 0% 97%; /* Light gray background */
+    --foreground: 0 0% 10%; /* Near black for text */
+
+    --card: 0 0% 100%; /* Pure white for cards */
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 0 0% 10%; /* Black for primary elements */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 85%; /* Light gray for secondary */
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 0 0% 90%; /* Very light gray */
+    --muted-foreground: 0 0% 45%; /* Medium gray for muted text */
+
+    --accent: 0 0% 20%; /* Dark gray for accents */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 85%; /* Light gray borders */
+    --input: 0 0% 100%; /* White inputs */
+    --ring: 0 0% 10%;
+
+    --radius: 0.25rem; /* Minimal border radius */
+    
+    /* Photography portfolio specific tokens */
+    --gallery-overlay: 0 0% 0% / 0.8; /* Black overlay for image modals */
+    --subtle-shadow: 0 0% 0% / 0.05; /* Very subtle shadows */
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* No dark mode - keeping consistent minimalist aesthetic */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Typography scale for photography portfolio */
+  .text-hero {
+    @apply text-6xl md:text-8xl font-light tracking-tight;
+  }
+  
+  .text-section {
+    @apply text-3xl md:text-4xl font-light tracking-wide;
+  }
+  
+  .text-project {
+    @apply text-xl md:text-2xl font-normal;
+  }
+
+
+@font-face {
+  font-family: 'Impact';
+  src: 
+       url('/font/Impact.ttf') format('truetype');
+}
+
+
+}
+
