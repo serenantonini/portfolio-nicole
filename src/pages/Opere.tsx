@@ -119,6 +119,7 @@ const Opere: FC = () => {
         src={img.src}
         alt={img.title}
         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        loading="lazy"
       />
 
       {/* Overlay con gradiente */}
@@ -165,6 +166,7 @@ const Opere: FC = () => {
                     src={images[activeIndex].gallery[carouselIndex]}
                     className="w-full max-h-[80vh] object-contain rounded-lg"
                     alt={`${images[activeIndex].title} - ${carouselIndex + 1}`}
+                    loading="lazy"
                   />
 
                   {/* Freccia sinistra */}

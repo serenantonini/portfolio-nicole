@@ -120,6 +120,8 @@ const Somnium: FC = () => {
                 src={images[selectedIndex]}
                 alt={`Somnium ${selectedIndex + 1}`}
                 className="object-cover w-full h-full rounded-lg"
+                  loading="lazy"
+
               />
             )}
           </div>
@@ -179,6 +181,8 @@ const Somnium: FC = () => {
                     src={img}
                     alt={`Somnium ${index + 1}`}
                     className="object-cover w-full h-[35vh]"
+                      loading="lazy"
+
                   />
                 </div>
               ))}
@@ -193,6 +197,8 @@ const Somnium: FC = () => {
                   src={images[5]}
                   alt="Somnium 6"
                   className="object-cover w-full h-full max-h-[80vh]"
+                    loading="lazy"
+
                 />
               </div>
 
@@ -205,6 +211,8 @@ const Somnium: FC = () => {
                     src={images[6]}
                     alt="Somnium 7"
                     className="object-cover w-full h-[40vh]"
+                      loading="lazy"
+
                   />
                 </div>
 
@@ -272,6 +280,8 @@ const Somnium: FC = () => {
             src={images[selectedIndex]}
             alt={`Somnium ${selectedIndex + 1}`}
             className="max-h-[90vh] max-w-[90vw] object-contain"
+              loading="lazy"
+
           />
 
           <button

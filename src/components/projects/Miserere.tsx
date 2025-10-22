@@ -228,7 +228,7 @@ return (
             style={{ transform: `translateX(-${mainIndex1 * 100}%)`, transitionDuration: `${TRANSITION_DURATION}ms` }}
           >
             {firstImages.map((img, i) => (
-              <img key={i} src={img} alt={`Miserere ${i + 1}`} className="w-80 h-60 object-cover flex-shrink-0 rounded-lg" />
+              <img key={i} src={img} alt={`Miserere ${i + 1}`} className="w-80 h-60 object-cover flex-shrink-0 rounded-lg"   loading="lazy"/>
             ))}
           </div>
         </div>
@@ -253,7 +253,7 @@ return (
             style={{ transform: `translateX(-${mainIndex2 * 100}%)`, transitionDuration: `${TRANSITION_DURATION}ms` }}
           >
             {secondImages.map((img, i) => (
-              <img key={i} src={img} alt={`Miserere ${i + 19}`} className="w-80 h-60 object-cover flex-shrink-0 rounded-lg" />
+              <img key={i} src={img} alt={`Miserere ${i + 19}`} className="w-80 h-60 object-cover flex-shrink-0 rounded-lg"   loading="lazy"/>
             ))}
           </div>
         </div>
@@ -299,7 +299,7 @@ return (
             style={{ transform: `translateX(-${mainIndex3 * 100}%)`, transitionDuration: `${TRANSITION_DURATION}ms` }}
           >
             {thirdImages.map((img, i) => (
-              <img key={i} src={img} alt={`Miserere ${i + 29}`} className="h-full object-cover flex-shrink-0 rounded-lg" />
+              <img key={i} src={img} alt={`Miserere ${i + 29}`} className="h-full object-cover flex-shrink-0 rounded-lg"   loading="lazy"/>
             ))}
           </div>
         </div>
@@ -313,7 +313,7 @@ return (
         <div className="grid grid-cols-3 gap-5">
           {firstImages.map((img, index) => (
             <div key={index} className="cursor-pointer" onClick={() => handleImageClick(index)}>
-              <img src={img} alt={`Miserere ${index + 1}`} className="object-cover w-full h-[35vh]" />
+              <img src={img} alt={`Miserere ${index + 1}`} className="object-cover w-full h-[35vh]"   loading="lazy"/>
             </div>
           ))}
         </div>
@@ -333,7 +333,7 @@ return (
           <div className="grid grid-cols-3 gap-4">
             {secondImages.slice(0,3).map((img, i) => (
               <div key={i+18} className="cursor-pointer" onClick={() => handleImageClick(i+18)}>
-                <img src={img} alt={`Miserere ${i + 19}`} className="object-cover w-full h-[30vh]" />
+                <img src={img} alt={`Miserere ${i + 19}`} className="object-cover w-full h-[30vh]"   loading="lazy"/>
               </div>
             ))}
           </div>
@@ -342,7 +342,7 @@ return (
           <div className="grid grid-cols-3 gap-4">
             {secondImages.slice(3,6).map((img, i) => (
               <div key={i+21} className="cursor-pointer" onClick={() => handleImageClick(i+21)}>
-                <img src={img} alt={`Miserere ${i + 22}`} className="object-cover w-full h-[30vh]" />
+                <img src={img} alt={`Miserere ${i + 22}`} className="object-cover w-full h-[30vh]"   loading="lazy"/>
               </div>
             ))}
           </div>
@@ -355,7 +355,7 @@ return (
     <div className="grid grid-cols-2 gap-4">
       {secondImages.slice(0,4).map((img, i) => (
         <div key={i} className="cursor-pointer" onClick={() => handleImageClick(i)}>
-          <img src={img} alt={`Miserere ${i}`} className="object-cover w-full h-[30vh]" />
+          <img src={img} alt={`Miserere ${i}`} className="object-cover w-full h-[30vh]"   loading="lazy"/>
         </div>
       ))}
     </div>
@@ -394,7 +394,7 @@ return (
         <div className="grid grid-cols-4 gap-4 mt-6 w-[110%] align-items-center">
           {thirdImages.map((img, i) => (
             <div key={i+27} className="cursor-pointer" onClick={() => handleImageClick(i+28)}>
-              <img src={img} alt={`Miserere ${i + 1}`} className="object-cover w-full h-full" />
+              <img src={img} alt={`Miserere ${i + 1}`} className="object-cover w-full h-full"   loading="lazy"/>
             </div>
           ))}
         </div>
@@ -417,6 +417,8 @@ return (
           onClick={e => e.stopPropagation()}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
+            loading="lazy"
+
         />
         <button onClick={e => { e.stopPropagation(); handleNext(e); }} className="absolute right-6 text-white text-4xl font-bold z-10">›</button>
         <button onClick={handleCloseModal} className="absolute top-6 right-6 text-white text-3xl font-bold z-10">✕</button>

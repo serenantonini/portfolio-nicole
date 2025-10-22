@@ -42,6 +42,8 @@ const Memoria: FC = () => {
             transition-transform 
             duration-300
           "
+            loading="lazy"
+
         />
       </div>
 
@@ -74,6 +76,8 @@ const Memoria: FC = () => {
             src={MemoriaImage}
             alt="Memoria"
             className="max-h-[90vh] max-w-[90vw] object-contain"
+              loading="lazy"
+
           />
           <button
             onClick={handleCloseModal}

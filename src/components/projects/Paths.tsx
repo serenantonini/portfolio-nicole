@@ -125,7 +125,7 @@ const Paths: FC = () => {
               style={{ transform: `translateX(-${selectedIndex * 100}%)`, transitionDuration: `${TRANSITION_DURATION}ms` }}
             >
               {images.map((img, i) => (
-                <img key={i} src={img} alt={`Paths ${i + 1}`} className="w-80 h-60 object-cover flex-shrink-0 rounded-lg" />
+                <img key={i} src={img} alt={`Paths ${i + 1}`} className="w-80 h-60 object-cover flex-shrink-0 rounded-lg"   loading="lazy"/>
               ))}
             </div>
           </div>
@@ -157,7 +157,7 @@ const Paths: FC = () => {
               style={{ transform: `translateX(-${miniIndex * 100}%)`, transitionDuration: `${TRANSITION_DURATION}ms` }}
             >
               {lastImages.map((img, i) => (
-                <img key={i} src={img} alt={`Paths last ${i + 1}`} className="w-80 h-60 object-cover flex-shrink-0 rounded-lg" />
+                <img key={i} src={img} alt={`Paths last ${i + 1}`} className="w-80 h-60 object-cover flex-shrink-0 rounded-lg"   loading="lazy"/>
               ))}
             </div>
           </div>
@@ -173,7 +173,7 @@ const Paths: FC = () => {
           <div className="grid grid-cols-3 gap-5 mr-20 w-[85%]">
             {images.map((img, i) => (
               <div key={i} className="cursor-pointer" onClick={() => handleImageClick(i)}>
-                <img src={img} alt={`Paths ${i + 1}`} className="object-cover w-full h-[35vh]" />
+                <img src={img} alt={`Paths ${i + 1}`} className="object-cover w-full h-[35vh]"   loading="lazy"/>
               </div>
             ))}
           </div>
@@ -181,7 +181,7 @@ const Paths: FC = () => {
           <div className="grid grid-cols-3 gap-4 mt-4 relative mr-20 w-[85%]">
             {lastImages.map((img, i) => (
               <div key={i} className="cursor-pointer" onClick={() => handleImageClick(i + images.length)}>
-                <img src={img} alt={`Paths last ${i + 1}`} className="object-cover w-full h-[30vh]" />
+                <img src={img} alt={`Paths last ${i + 1}`} className="object-cover w-full h-[30vh]"   loading="lazy"/>
               </div>
             ))}
             <div className="relative">
@@ -222,6 +222,8 @@ const Paths: FC = () => {
             onClick={e => e.stopPropagation()}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
+              loading="lazy"
+
           />
           <button onClick={e => { e.stopPropagation(); handleNext(); }} className="absolute right-6 text-white text-4xl font-bold z-10">›</button>
           <button onClick={handleCloseModal} className="absolute top-6 right-6 text-white text-3xl font-bold z-10">✕</button>

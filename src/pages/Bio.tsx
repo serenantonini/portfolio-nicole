@@ -63,6 +63,7 @@ const Bio = () => {
       src={bioImage}
       alt="Bio"
       className="h-auto w-[65%] object-cover md:h-full"
+      loading="lazy"
     />
   </div>
 
@@ -87,17 +88,17 @@ const Bio = () => {
     {/* --- CONTATTI --- */}
     <div className="space-y-2 mt-4 text-gray-200">
       <div className="flex items-center gap-2">
-        <img src="/telefono.png" alt="Telefono" className="w-4 h-4" />
+        <img src="/telefono.png" alt="Telefono" className="w-4 h-4" loading="lazy"/>
         <p>+39 345 164 2142</p>
       </div>
 
       <div className="flex items-center gap-2">
-        <img src="/email.png" alt="Email" className="w-4 h-4" />
+        <img src="/email.png" alt="Email" className="w-4 h-4" loading="lazy"/>
         <p>nicolepagliucaphoto@gmail.com</p>
       </div>
 
       <div className="flex items-center gap-2">
-        <img src="/instagram.png" alt="Instagram" className="w-4 h-4" />
+        <img src="/instagram.png" alt="Instagram" className="w-4 h-4" loading="lazy"/>
         <a
           href="https://instagram.com/nikolephoto_"
           target="_blank"

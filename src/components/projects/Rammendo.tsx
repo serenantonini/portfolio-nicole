@@ -144,6 +144,8 @@ const Rammendo: FC = () => {
                     src={img}
                     alt={`Rammendo ${i + 1}`}
                     className="w-80 h-60 object-cover flex-shrink-0 rounded-lg"
+                      loading="lazy"
+
                   />
                 ))}
               </div>
@@ -187,6 +189,8 @@ const Rammendo: FC = () => {
                     src={img}
                     alt={`Rammendo ${i + 16}`}
                     className="w-80 h-60 object-cover flex-shrink-0 rounded-lg"
+                      loading="lazy"
+
                   />
                 ))}
               </div>
@@ -222,6 +226,8 @@ const Rammendo: FC = () => {
                     src={img}
                     alt={`Rammendo ${index + 1}`}
                     className="object-cover w-full h-[35vh]"
+                      loading="lazy"
+
                   />
                 </div>
               ))}
@@ -230,7 +236,7 @@ const Rammendo: FC = () => {
             {/* Sesta riga: foto + testo */}
             <div className="grid grid-cols-3 gap-4 mt-2 relative">
               <div className="cursor-pointer" onClick={() => handleImageClick(15)}>
-                <img src={allImages[15]} alt="Rammendo 16" className="object-cover w-full h-[30vh]" />
+                <img src={allImages[15]} alt="Rammendo 16" className="object-cover w-full h-[30vh]"   loading="lazy"/>
               </div>
               <div className="col-span-2 flex flex-col p-4">
                 <div className="relative font-scritte text-[14px] text-white">
@@ -266,6 +272,8 @@ const Rammendo: FC = () => {
                     src={img}
                     alt={`Rammendo ${index + 17}`}
                     className="object-cover w-full h-[35vh]"
+                      loading="lazy"
+
                   />
                 </div>
               ))}
@@ -308,6 +316,8 @@ const Rammendo: FC = () => {
               src={allImages[selectedIndex]}
               alt={`Rammendo ${selectedIndex + 1}`}
               className="max-h-[90vh] max-w-[90vw] object-contain"
+                loading="lazy"
+
             />
 
             <button

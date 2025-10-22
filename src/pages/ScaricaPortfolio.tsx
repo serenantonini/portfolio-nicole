@@ -81,6 +81,7 @@ const handleDownload = (type: "commercial" | "personal") => {
                 src={img}
                 className="w-full h-full object-cover rounded-lg"
                 alt={`Slide ${idx + 1}`}
+                loading="lazy"
               />
             </div>
           ))}

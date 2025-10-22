@@ -127,6 +127,7 @@ const AIGenerated: FC = () => {
                   key={i}
                   src={img}
                   alt={`AI ${i + 1}`}
+                  loading="lazy"
                   className="w-80 h-60 object-cover flex-shrink-0 rounded-lg"
                 />
               ))}
@@ -145,10 +146,10 @@ const AIGenerated: FC = () => {
         // Desktop invariato
         <div className="grid grid-cols-3 gap-5 h-auto md:h-[160vh] mr-20 w-[95%]">
           <div className="cursor-pointer" onClick={() => handleImageClick(0)}>
-            <img src={images[0]} alt="AI 1" className="object-cover w-full h-full" />
+            <img src={images[0]} alt="AI 1" className="object-cover w-full h-full"   loading="lazy" />
           </div>
           <div className="cursor-pointer" onClick={() => handleImageClick(1)}>
-            <img src={images[1]} alt="AI 2" className="object-cover w-full h-full" />
+            <img src={images[1]} alt="AI 2" className="object-cover w-full h-full"   loading="lazy"/>
           </div>
           <div className="col-span-2 sm:col-span-3 md:col-span-1 md:row-span-2 p-0 overflow-y-auto font-scritte text-[14px] text-white w-[110%]">
             <h2 className="font-scritte text-[14px] italic font-bold mb-2">AI Generated Memory, 2024</h2>
@@ -156,7 +157,7 @@ const AIGenerated: FC = () => {
           </div>
           {images.slice(2).map((img, i) => (
             <div key={i + 2} className="cursor-pointer" onClick={() => handleImageClick(i + 2)}>
-              <img src={img} alt={`AI ${i + 3}`} className="object-cover w-full h-full" />
+              <img src={img} alt={`AI ${i + 3}`} className="object-cover w-full h-full"   loading="lazy"/>
             </div>
           ))}
         </div>
@@ -188,6 +189,8 @@ const AIGenerated: FC = () => {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onClick={(e) => e.stopPropagation()} // evita chiusura cliccando sull’immagine
+        loading="lazy"
+
     />
 
     <button

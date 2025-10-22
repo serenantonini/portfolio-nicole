@@ -98,7 +98,7 @@ const AreYou: FC = () => {
                 style={{ transform: `translateX(-${selectedIndex * 100}%)`, transitionDuration: `${TRANSITION_DURATION}ms` }}
               >
                 {images.map((img, i) => (
-                  <img key={i} src={img} alt={`AreYou ${i + 1}`} className="w-full h-60 object-cover flex-shrink-0 rounded-lg" />
+                  <img key={i} src={img} alt={`AreYou ${i + 1}`} className="w-full h-60 object-cover flex-shrink-0 rounded-lg"   loading="lazy"/>
                 ))}
               </div>
             </div>
@@ -180,7 +180,7 @@ const AreYou: FC = () => {
                 const img = images[cellIndex];
                 return (
                   <div key={cellIndex} className="cursor-pointer" onClick={() => handleImageClick(cellIndex)}>
-                    <img src={img} alt={`AreYou ${cellIndex + 1}`} className="object-cover w-full h-[35vh]" />
+                    <img src={img} alt={`AreYou ${cellIndex + 1}`} className="object-cover w-full h-[35vh]"   loading="lazy"/>
                   </div>
                 );
               })}
@@ -216,6 +216,7 @@ const AreYou: FC = () => {
               src={images[selectedIndex]}
               alt={`AreYou ${selectedIndex + 1}`}
               className="max-h-[90vh] max-w-[90vw] object-contain"
+                loading="lazy"
             />
             <button onClick={handleNext} className="absolute right-6 text-white text-4xl font-bold">›</button>
             <button onClick={handleCloseModal} className="absolute top-6 right-6 text-white text-3xl font-bold">✕</button>
