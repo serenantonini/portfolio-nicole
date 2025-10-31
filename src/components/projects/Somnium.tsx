@@ -20,9 +20,9 @@ const images = [
 ];
 
 interface SlideshowConfig {
-  interval?: number;          // tempo tra le immagini in ms
-  transitionDuration?: number; // durata transizione in ms
-  reverse?: boolean;           // direzione dello scroll
+  interval?: number;
+  transitionDuration?: number;
+  reverse?: boolean;
 }
 
 const Somnium: FC = () => {
@@ -35,7 +35,7 @@ const Somnium: FC = () => {
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(0);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -52,31 +52,31 @@ const Somnium: FC = () => {
   useEffect(() => {
     if (!isMobile || isPaused) return;
     const interval = setInterval(() => {
-      setSelectedIndex((prev) => (prev === null ? 0 : (prev + 1) % images.length));
+      setSelectedIndex((prev) => (prev + 1) % images.length);
     }, config.interval);
     return () => clearInterval(interval);
   }, [isMobile, isPaused, config.interval]);
 
-  // --- Gestione modal ---
+  // --- Modal handlers ---
   const handleImageClick = (index: number) => {
     setSelectedIndex(index);
     setIsModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleCloseModal = () => setIsModalOpen(false);
+  const handleNext = () => setSelectedIndex((prev) => (prev + 1) % images.length);
+  const handlePrev = () => setSelectedIndex((prev) => (prev - 1 + images.length) % images.length);
+
+  // --- Swipe handling ---
+  const handleTouchStart = (e: React.TouchEvent) => setTouchStartX(e.touches[0].clientX);
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) diff > 0 ? handleNext() : handlePrev();
+    setTouchStartX(null);
   };
 
-  const handleNext = () => {
-    if (selectedIndex === null) return;
-    setSelectedIndex((selectedIndex + 1) % images.length);
-  };
-
-  const handlePrev = () => {
-    if (selectedIndex === null) return;
-    setSelectedIndex((selectedIndex - 1 + images.length) % images.length);
-  };
-
+  // --- Keyboard navigation for modal ---
   const handleKeyDown = (e: KeyboardEvent) => {
     if (!isModalOpen) return;
     if (e.key === "ArrowRight") handleNext();
@@ -89,41 +89,36 @@ const Somnium: FC = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isModalOpen, selectedIndex]);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX === null) return;
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) {
-      diff > 0 ? handleNext() : handlePrev();
-    }
-    setTouchStartX(null);
-  };
-
   return (
     <div className="p-3 text-white font-scritte text-[14px]">
       {isMobile ? (
         <>
-          {/* MOBILE: slideshow */}
+          {/* MOBILE: slideshow con transizione fluida */}
           <div
             className="mb-4 w-80 h-60 mx-auto cursor-pointer overflow-hidden relative rounded-lg"
-            onClick={() => selectedIndex !== null && handleImageClick(selectedIndex)}
+            onClick={() => handleImageClick(selectedIndex)}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            {selectedIndex !== null && (
-              <img
-                src={images[selectedIndex]}
-                alt={`Somnium ${selectedIndex + 1}`}
-                className="object-cover w-full h-full rounded-lg"
+            <div
+              className="flex transition-transform ease-in-out"
+              style={{
+                transform: `translateX(-${selectedIndex * 100}%)`,
+                transitionDuration: `${config.transitionDuration}ms`,
+              }}
+            >
+              {images.map((img, i) => (
+                <img
+                  key={i}
+                  src={img}
+                  alt={`Somnium ${i + 1}`}
+                  className="w-80 h-60 object-cover flex-shrink-0 rounded-lg"
                   loading="lazy"
-
-              />
-            )}
+                />
+              ))}
+            </div>
           </div>
 
           {/* testo */}
@@ -181,8 +176,7 @@ const Somnium: FC = () => {
                     src={img}
                     alt={`Somnium ${index + 1}`}
                     className="object-cover w-full h-[35vh]"
-                      loading="lazy"
-
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -197,8 +191,7 @@ const Somnium: FC = () => {
                   src={images[5]}
                   alt="Somnium 6"
                   className="object-cover w-full h-full max-h-[80vh]"
-                    loading="lazy"
-
+                  loading="lazy"
                 />
               </div>
 
@@ -211,8 +204,7 @@ const Somnium: FC = () => {
                     src={images[6]}
                     alt="Somnium 7"
                     className="object-cover w-full h-[40vh]"
-                      loading="lazy"
-
+                    loading="lazy"
                   />
                 </div>
 
@@ -263,7 +255,7 @@ const Somnium: FC = () => {
       )}
 
       {/* MODALE */}
-      {isModalOpen && selectedIndex !== null && (
+      {isModalOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50 animate-modalFadeIn"
           onTouchStart={handleTouchStart}
@@ -280,8 +272,7 @@ const Somnium: FC = () => {
             src={images[selectedIndex]}
             alt={`Somnium ${selectedIndex + 1}`}
             className="max-h-[90vh] max-w-[90vw] object-contain"
-              loading="lazy"
-
+            loading="lazy"
           />
 
           <button

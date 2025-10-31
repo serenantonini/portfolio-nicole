@@ -5,20 +5,20 @@ import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
 
 // --- Import immagini ---
-import commerciale1 from "../assets/commerciale/1.jpg";
-import commerciale2 from "../assets/commerciale/2.jpg";
-import commerciale3 from "../assets/commerciale/3.png";
-import commerciale4 from "../assets/commerciale/4.jpg";
-import commerciale5 from "../assets/commerciale/5.jpg";
-import commerciale6 from "../assets/commerciale/6.png";
+import commerciale1 from "../assets/commerciale/1.webp";
+import commerciale2 from "../assets/commerciale/2.webp";
+import commerciale3 from "../assets/commerciale/3.webp";
+import commerciale4 from "../assets/commerciale/4.webp";
+import commerciale5 from "../assets/commerciale/5.webp";
+import commerciale6 from "../assets/commerciale/6.webp";
 
-import personale1 from "../assets/personale/1.jpg";
-import personale2 from "../assets/personale/2.jpg";
-import personale3 from "../assets/personale/3.jpg";
-import personale4 from "../assets/personale/4.jpeg";
-import personale5 from "../assets/personale/5.jpg";
-import personale6 from "../assets/personale/6.jpeg";
-import personale7 from "../assets/personale/7.jpg";
+import personale1 from "../assets/personale/1.webp";
+import personale2 from "../assets/personale/2.webp";
+import personale3 from "../assets/personale/3.webp";
+import personale4 from "../assets/personale/4.webp";
+import personale5 from "../assets/personale/5.webp";
+import personale6 from "../assets/personale/6.webp";
+import personale7 from "../assets/personale/7.webp";
 
 // --- Array immagini ---
 const imagesCommerciale = [commerciale1, commerciale2, commerciale3, commerciale4, commerciale5, commerciale6];
@@ -39,8 +39,8 @@ const ScaricaPortfolio = () => {
 const handleDownload = (type: "commercial" | "personal") => {
   const pdfUrl =
     type === "commercial"
-      ? "public/portfolio_commerciale.pdf"
-      : "public/portfolio_personale.pdf";
+      ? "/portfolio_commerciale.pdf"
+      : "/portfolio_personale.pdf";
 
   // --- 1️⃣ Apri il PDF in una nuova scheda ---
   window.open(pdfUrl, "_blank");

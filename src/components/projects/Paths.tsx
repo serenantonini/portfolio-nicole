@@ -113,7 +113,7 @@ const Paths: FC = () => {
         <>
           {/* Main mobile slideshow */}
           <div
-            className="w-80 h-60 mx-auto overflow-hidden relative rounded-lg cursor-pointer mb-4"
+            className="w-80 h-80 mx-auto overflow-hidden relative rounded-lg cursor-pointer mb-4"
             onClick={() => handleImageClick(selectedIndex)}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
@@ -125,7 +125,7 @@ const Paths: FC = () => {
               style={{ transform: `translateX(-${selectedIndex * 100}%)`, transitionDuration: `${TRANSITION_DURATION}ms` }}
             >
               {images.map((img, i) => (
-                <img key={i} src={img} alt={`Paths ${i + 1}`} className="w-80 h-60 object-cover flex-shrink-0 rounded-lg"   loading="lazy"/>
+                <img key={i} src={img} alt={`Paths ${i + 1}`} className="w-80 h-80 object-cover flex-shrink-0 rounded-lg"   loading="lazy"/>
               ))}
             </div>
           </div>

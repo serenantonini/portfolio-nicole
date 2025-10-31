@@ -101,15 +101,19 @@ const Navbar = () => {
             ))}
 
             {/* Lingua mobile elegante */}
-            <button
-              onClick={() => {
-                changeLanguage(otherLanguage);
-                setIsOpen(false);
-              }}
-              className="text-sm font-scritte px-4 py-2 rounded-full transition-all duration-300 text-white hover:bg-white hover:text-black"
-            >
-              {otherLanguageFlag}
-            </button>
+              <button
+                onClick={() => {
+                  changeLanguage(otherLanguage);
+                  setIsOpen(false);
+                }}
+                className={cn(
+                  "text-sm font-medium px-4 py-2 rounded-full transition-all duration-300 font-scritte text-left",
+                  "text-white hover:bg-white hover:text-black self-start"
+                )}
+              >
+                {otherLanguageFlag}
+              </button>
+
           </div>
         )}
       </div>

@@ -2,7 +2,9 @@ import { FC, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Layout from "@/components/Layout";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
+// --- Gallerie principali ---
 import gallery1 from "../assets/gallery/print1.png";
 import gallery2 from "../assets/gallery/print2.png";
 import gallery3 from "../assets/gallery/print3.png";
@@ -40,9 +42,6 @@ import submiserere5 from "../assets/gallery/submiserere5.jpg";
 import submiserere6 from "../assets/gallery/submiserere6.jpg";
 import submiserere7 from "../assets/gallery/submiserere7.jpg";
 
-
-
-
 interface ImageItem {
   src: string;
   title: string;
@@ -58,7 +57,48 @@ const Opere: FC = () => {
   const [carouselIndex, setCarouselIndex] = useState(0);
 
   // --- Costanti note ---
-  const NOTES = { UNICA: t("opere.notes.edizione_unica") };
+  const NOTES = {
+    UNICA: t("opere.notes.edizione_unica"),
+    VENTI: t("opere.notes.edizione_20"),
+    CINQUE: t("opere.notes.edizione_5"),
+    DIECI: t("opere.notes.edizione_10"),
+  };
+
+  // --- Funzione per rendere cliccabili "works" e "about" ---
+  const parseDescription = (text: string) => {
+    // regex per works/about con punteggiatura vicina
+    const regex = /(works|about)([.,;!?\s]?)/gi;
+    const parts = text.split(regex);
+
+    return parts.map((part, idx) => {
+      if (/^works$/i.test(part)) {
+        return (
+          <Link key={idx} to="/works" className="hover:text-gray-600">
+            {part}
+          </Link>
+        );
+      } else if (/^about$/i.test(part)) {
+        return (
+          <Link key={idx} to="/about" className="hover:text-gray-600">
+            {part}
+          </Link>
+        );
+      } else {
+        return part;
+      }
+    });
+  };
+
+  // --- Funzione per evidenziare la prima parola del titolo e usare parseDescription ---
+  const renderDescription = (description: string, firstWord: string) => {
+    const parts = description.split(new RegExp(`(${firstWord})`, "gi"));
+    return parts.map((part, idx) => {
+      if (part.toLowerCase() === firstWord.toLowerCase()) {
+        return <span key={idx} className="italic">{part}</span>;
+      }
+      return parseDescription(part);
+    });
+  };
 
   // --- Dati immagini ---
   const images: ImageItem[] = [
@@ -67,13 +107,12 @@ const Opere: FC = () => {
     { src: gallery3, title: "Paths, 3", price: "€300", notes: NOTES.UNICA, gallery: [gallery3, subgallery3], descriptionKey: "opere.paths3" },
     { src: gallery4, title: "Paths, 4", price: "€300", notes: NOTES.UNICA, gallery: [gallery4, subgallery4], descriptionKey: "opere.paths4" },
     { src: gallery5, title: "Paths, 5", price: "€300", notes: NOTES.UNICA, gallery: [gallery5, subgallery5], descriptionKey: "opere.paths5" },
-    { src: gallery6, title: "Miserere, 1", price: "€50", gallery: [gallery6, subgallery6], descriptionKey: "opere.miserere1" },
-    { src: gallery7, title: "Miserere, 2", price: "€50", gallery: [gallery7, subgallery7], descriptionKey: "opere.miserere2" },
-    { src: gallery8, title: "Miserere, 3", price: "€50", gallery: [gallery8, subgallery8], descriptionKey: "opere.miserere3" },
-    { src: gallery9, title: "Miserere, 4", price: "€250", gallery: [gallery9, subgallery9], descriptionKey: "opere.miserere4" },
+    { src: gallery6, title: "Miserere, 1", price: "€50", notes: NOTES.VENTI, gallery: [gallery6, subgallery6], descriptionKey: "opere.miserere1" },
+    { src: gallery7, title: "Miserere, 2", price: "€50", notes: NOTES.VENTI, gallery: [gallery7, subgallery7], descriptionKey: "opere.miserere2" },
+    { src: gallery8, title: "Miserere, 3", price: "€50", notes: NOTES.VENTI, gallery: [gallery8, subgallery8], descriptionKey: "opere.miserere3" },
+    { src: gallery9, title: "Miserere, 4", price: "€250", notes: NOTES.CINQUE, gallery: [gallery9, subgallery9], descriptionKey: "opere.miserere4" },
     { src: gallery10, title: "Rammendo", price: "€900", notes: NOTES.UNICA, gallery: [gallery10, subrammendo1, subrammendo2, subrammendo3, subrammendo4, subrammendo5, subrammendo6, subrammendo7], descriptionKey: "opere.rammendo" },
-    { src: gallery11, title: "Miserere", price: "€800", gallery: [gallery11, submiserere1, submiserere2, submiserere3, submiserere4, submiserere5, submiserere6, submiserere7], descriptionKey: "opere.miserere_totale" },
-  
+    { src: gallery11, title: "Miserere", price: "€800", notes: NOTES.DIECI, gallery: [gallery11, submiserere1, submiserere2, submiserere3, submiserere4, submiserere5, submiserere6, submiserere7], descriptionKey: "opere.miserere_totale" },
   ];
 
   // --- Gestione tastiera ---
@@ -105,124 +144,118 @@ const Opere: FC = () => {
     <Layout>
       <div className="bg-black min-h-screen p-4 md:p-6 font-scritte text-[14px] text-white">
         {/* --- Griglia immagini principali --- */}
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8">
-  {images.map((img, index) => (
-    <div
-      key={index}
-      className="relative group cursor-pointer overflow-hidden"
-      onClick={() => {
-        setActiveIndex(index);
-        setCarouselIndex(0);
-      }}
-    >
-      <img
-        src={img.src}
-        alt={img.title}
-        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-        loading="lazy"
-      />
-
-      {/* Overlay con gradiente */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 
-                      bg-gradient-to-t from-black/90 via-transparent to-white/0">
-        <div className="flex justify-between w-full">
-          {/* Titolo a sinistra */}
-          <span className="text-white font-scritte text-[14px]">{img.title}</span>
-
-          {/* Prezzo e note a destra */}
-          <div className="text-right">
-            <p className="text-white text-[14px] font-scritte">{img.price}</p>
-            {img.notes && <p className="text-gray-300 text-[12px]">{img.notes}</p>}
-          </div>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
-
-
-        {/* --- Modal / Lightbox --- */}
-        <AnimatePresence>
-          {activeIndex !== null && (
-            <motion.div
-              className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={() => setActiveIndex(null)}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8">
+          {images.map((img, index) => (
+            <div
+              key={index}
+              className="relative group cursor-pointer overflow-hidden"
+              onClick={() => {
+                setActiveIndex(index);
+                setCarouselIndex(0);
+              }}
             >
-              <motion.div
-                className="bg-white bg-opacity-100 p-6 max-w-6xl w-full flex flex-col md:flex-row gap-6 relative"
-                initial={{ scale: 0.9 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                {/* --- Carousel immagini --- */}
-                <div className="flex-1 relative flex items-center justify-center">
-                  <img
-                    src={images[activeIndex].gallery[carouselIndex]}
-                    className="w-full max-h-[80vh] object-contain rounded-lg"
-                    alt={`${images[activeIndex].title} - ${carouselIndex + 1}`}
-                    loading="lazy"
-                  />
-
-                  {/* Freccia sinistra */}
-                  <button
-                    className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold bg-black bg-opacity-30 p-2 rounded-full hover:bg-opacity-60 transition"
-                    onClick={() =>
-                      setCarouselIndex(
-                        (prev) =>
-                          (prev - 1 + images[activeIndex].gallery.length) %
-                          images[activeIndex].gallery.length
-                      )
-                    }
-                  >
-                    ‹
-                  </button>
-
-                  {/* Freccia destra */}
-                  <button
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold bg-black bg-opacity-30 p-2 rounded-full hover:bg-opacity-60 transition"
-                    onClick={() =>
-                      setCarouselIndex(
-                        (prev) =>
-                          (prev + 1) % images[activeIndex].gallery.length
-                      )
-                    }
-                  >
-                    ›
-                  </button>
+              <img
+                src={img.src}
+                alt={img.title}
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 bg-gradient-to-t from-black/90 via-transparent to-white/0">
+                <div className="flex justify-between w-full">
+                  <span className="text-white font-scritte text-[14px]">{img.title}</span>
+                  <div className="text-right">
+                    <p className="text-white text-[14px] font-scritte">{img.price}</p>
+                    {img.notes && <p className="text-gray-300 text-[12px]">{img.notes}</p>}
+                  </div>
                 </div>
+              </div>
+            </div>
+          ))}
+        </div>
 
-                {/* --- Descrizione --- */}
-                <div className="flex-1 overflow-y-auto text-black font-scritte text-[14px] whitespace-pre-line">
-                  {images[activeIndex].title && (
-                    <h2 className="font-bold mb-2">{images[activeIndex].title}</h2>
-                  )}
-                  <p className="mb-4">
-                    {(() => {
-                      const description = t(`${images[activeIndex].descriptionKey}`);
-                      const firstWord = images[activeIndex].title.split(" ")[0];
-                      const parts = description.split(new RegExp(`(${firstWord})`, "gi"));
-                      return parts.map((part, idx) =>
-                        part.toLowerCase() === firstWord.toLowerCase() ? (
-                          <span key={idx} className="italic">
-                            {part}
-                          </span>
-                        ) : (
-                          part
-                        )
-                      );
-                    })()}
-                  </p>
-                </div>
-              </motion.div>
-            </motion.div>
+{/* --- Modal / Lightbox --- */}
+<AnimatePresence>
+  {activeIndex !== null && (
+    <motion.div
+      className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      onClick={() => setActiveIndex(null)} // chiudi cliccando fuori
+    >
+      <motion.div
+        className="relative bg-white bg-opacity-100 p-4 md:p-6 rounded-lg shadow-lg 
+                   w-full max-w-2xl md:max-w-3xl flex flex-col gap-4"
+        initial={{ scale: 0.9 }}
+        animate={{ scale: 1 }}
+        exit={{ scale: 0.9 }}
+        transition={{ duration: 0.3 }}
+        onClick={(e) => e.stopPropagation()} // evita chiusura cliccando dentro
+      >
+        {/* Bottone X per chiudere */}
+        <button
+          className="absolute top-2 right-2 text-black text-xl md:text-2xl font-bold 
+                     hover:text-gray-600 transition z-10"
+          onClick={() => setActiveIndex(null)}
+          aria-label="Chiudi"
+        >
+          ✕
+        </button>
+
+        {/* Carousel immagini */}
+        <div className="flex justify-center items-center relative">
+          <img
+            src={images[activeIndex].gallery[carouselIndex]}
+            className="w-auto max-h-[60vh] object-contain rounded-lg"
+            alt={`${images[activeIndex].title} - ${carouselIndex + 1}`}
+            loading="lazy"
+          />
+          <button
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white text-2xl font-bold 
+                       bg-black/40 p-2 rounded-full hover:bg-black/70 transition"
+            onClick={() =>
+              setCarouselIndex(
+                (prev) =>
+                  (prev - 1 + images[activeIndex].gallery.length) %
+                  images[activeIndex].gallery.length
+              )
+            }
+          >
+            ‹
+          </button>
+          <button
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white text-2xl font-bold 
+                       bg-black/40 p-2 rounded-full hover:bg-black/70 transition"
+            onClick={() =>
+              setCarouselIndex(
+                (prev) =>
+                  (prev + 1) % images[activeIndex].gallery.length
+              )
+            }
+          >
+            ›
+          </button>
+        </div>
+
+        {/* Descrizione */}
+        <div className="overflow-y-auto text-black font-scritte text-[14px] whitespace-pre-line">
+          {images[activeIndex].title && (
+            <h2 className="font-bold mb-2 italic">{images[activeIndex].title}</h2>
           )}
-        </AnimatePresence>
+          <p className="mb-2">
+            {renderDescription(
+              t(`${images[activeIndex].descriptionKey}`),
+              images[activeIndex].title.split(" ")[0]
+            )}
+          </p>
+        </div>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
+
       </div>
     </Layout>
   );

@@ -200,7 +200,7 @@ const Rammendo: FC = () => {
           <div className="mt-4 w-full">
             <div className="w-full aspect-video overflow-hidden rounded-md">
               <iframe
-                src="https://player.vimeo.com/video/1030332622?h=8b5c373717&autoplay=1&muted=1&controls=1&title=0&byline=0&portrait=0"
+                src="https://player.vimeo.com/video/1129829745?h=8b5c373717&autoplay=1&muted=1&controls=1&title=0&byline=0&portrait=0"
                 className="w-full h-full border-0"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
@@ -284,7 +284,7 @@ const Rammendo: FC = () => {
             <div className="col-span-3 p-0 m-0">
               <div className="w-full aspect-video overflow-hidden">
                 <iframe
-                  src="https://player.vimeo.com/video/1030332622?h=8b5c373717&autoplay=1&muted=1&controls=1&title=0&byline=0&portrait=0"
+                  src="https://player.vimeo.com/video/1129829745?h=8b5c373717&autoplay=1&muted=1&controls=1&title=0&byline=0&portrait=0"
                   className="w-full h-full p-0 m-0 border-0"
                   allow="autoplay; fullscreen; picture-in-picture"
                   allowFullScreen

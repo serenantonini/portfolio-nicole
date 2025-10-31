@@ -34,7 +34,7 @@ const Bio = () => {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("https://formspree.io/f/xeornkgo", {
+      const response = await fetch("https://formspree.io/f/xjkaqqlk", {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },
@@ -62,7 +62,7 @@ const Bio = () => {
     <img
       src={bioImage}
       alt="Bio"
-      className="h-auto w-[65%] object-cover md:h-full"
+      className="h-auto w-[65%] object-cover object-top md:h-full"
       loading="lazy"
     />
   </div>
